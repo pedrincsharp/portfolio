@@ -125,7 +125,9 @@ export class DataService {
       window.location.origin !== 'null' &&
       !window.location.origin.startsWith('http://localhost:3000') // evita ruído durante testes unitários jsdom sem servidor ativo
     ) {
-      const url = `${window.location.origin}/dados.json?t=${Date.now()}`;
+      const base = typeof document !== 'undefined' && document.baseURI ? document.baseURI : '/';
+      const cleanBase = base.endsWith('/') ? base.slice(0, -1) : base;
+      const url = `${cleanBase}/dados.json?t=${Date.now()}`;
       this.http.get<PortfolioData>(url).pipe(
         tap((dadosCarregados) => {
           if (dadosCarregados) {
