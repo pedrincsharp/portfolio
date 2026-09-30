@@ -1,0 +1,78 @@
+<footer id="footer" class="bg-brand-dark border-t-2 border-brand-navy py-16 text-slate-300">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+    
+    <!-- Linha Superior: Marca e Conexões Tech -->
+    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-8 border-b border-brand-navy">
+      
+      <!-- Marca -->
+      <div class="flex items-center gap-3">
+        <span class="w-8 h-8 bg-brand-blue border border-brand-cyan flex items-center justify-center font-mono font-bold text-white text-xs">
+          JP
+        </span>
+        <span class="font-mono text-sm uppercase tracking-wider text-white">
+          {{ footerData().direitos }}
+        </span>
+      </div>
+
+      <!-- Links de Contato Minimalistas -->
+      <div class="flex flex-wrap items-center gap-2">
+        <!-- GitHub -->
+        <a
+          [href]="footerData().github"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="px-3 py-1.5 text-xs font-mono uppercase tracking-wider text-slate-300 bg-brand-navy border border-brand-blue hover:border-brand-cyan hover:text-brand-cyan transition-colors"
+          title="GitHub"
+          aria-label="Acessar perfil no GitHub"
+        >
+          [ GitHub ]
+        </a>
+
+        <!-- LinkedIn -->
+        <a
+          [href]="footerData().linkedin"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="px-3 py-1.5 text-xs font-mono uppercase tracking-wider text-slate-300 bg-brand-navy border border-brand-blue hover:border-brand-cyan hover:text-brand-cyan transition-colors"
+          title="LinkedIn"
+          aria-label="Acessar perfil no LinkedIn"
+        >
+          [ LinkedIn ]
+        </a>
+
+        <!-- Email -->
+        <a
+          [href]="'mailto:' + footerData().email"
+          class="px-3 py-1.5 text-xs font-mono uppercase tracking-wider text-slate-300 bg-brand-navy border border-brand-blue hover:border-brand-cyan hover:text-brand-cyan transition-colors"
+          title="Enviar e-mail"
+          aria-label="Enviar e-mail de contato"
+        >
+          [ E-mail ]
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Linha Inferior: Datas Obrigatórias em Caixas Sólidas Tech -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      
+      <!-- Card Data de Hoje -->
+      <div class="bg-brand-navy border border-brand-blue p-4 flex items-center justify-between">
+        <span class="text-xs font-mono uppercase tracking-wider text-slate-400">// Data de hoje</span>
+        <span class="text-xs font-mono font-bold text-white bg-brand-dark border border-brand-navy px-2.5 py-1">
+          {{ dataHoje() }}
+        </span>
+      </div>
+
+      <!-- Card Data da Última Alteração -->
+      <div class="bg-brand-navy border border-brand-blue p-4 flex items-center justify-between">
+        <span class="text-xs font-mono uppercase tracking-wider text-slate-400">// Última alteração</span>
+        <span class="text-xs font-mono font-bold text-brand-cyan bg-brand-dark border border-brand-navy px-2.5 py-1">
+          {{ footerData().ultimaAlteracao }}
+        </span>
+      </div>
+
+    </div>
+
+  </div>
+</footer>

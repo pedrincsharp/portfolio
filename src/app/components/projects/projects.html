@@ -1,0 +1,100 @@
+<section id="projects" class="py-20 lg:py-28 border-b border-brand-navy bg-brand-dark">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+    
+    <!-- Cabeçalho da Seção Minimalista Tech -->
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+      <div class="space-y-3">
+        <div class="inline-block text-xs font-mono uppercase tracking-widest text-brand-cyan bg-brand-navy border border-brand-blue px-3 py-1">
+          // 02. Projetos
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-black uppercase text-white tracking-tight">
+          Projetos & Trabalhos
+        </h2>
+        <div class="w-12 h-1 bg-brand-cyan"></div>
+      </div>
+
+      @if (projetos().length > 0) {
+        <div class="text-xs font-mono uppercase tracking-wider text-slate-400 flex items-center gap-2">
+          <span class="text-brand-cyan font-bold">></span>
+          <span>Scroll Horizontal</span>
+        </div>
+      }
+    </div>
+
+    <!-- Lista de Cards de Projetos na Horizontal -->
+    @if (projetos().length > 0) {
+      <div class="flex gap-6 overflow-x-auto pb-6 pt-2 snap-x snap-mandatory custom-scrollbar">
+        @for (projeto of projetos(); track projeto.nome) {
+          <article class="w-80 sm:w-96 flex-shrink-0 snap-start bg-brand-navy border-2 border-brand-blue hover:border-brand-cyan transition-colors flex flex-col justify-between group">
+            
+            <div>
+              <!-- Imagem com Borda Sólida Retangular -->
+              <div class="relative h-48 w-full bg-brand-dark border-b border-brand-blue overflow-hidden">
+                <img
+                  [src]="projeto.img"
+                  [alt]="projeto.nome"
+                  class="w-full h-full object-cover object-center grayscale group-hover:grayscale-0 transition-all duration-300"
+                  loading="lazy"
+                />
+              </div>
+
+              <!-- Informações do Card -->
+              <div class="p-6 space-y-3">
+                <h3 class="text-lg font-bold uppercase text-white group-hover:text-brand-cyan transition-colors">
+                  {{ projeto.nome }}
+                </h3>
+                <p class="text-sm text-slate-300 leading-relaxed font-normal line-clamp-3">
+                  {{ projeto.desc }}
+                </p>
+
+                <!-- Tags Técnicas -->
+                @if (projeto.tags && projeto.tags.length > 0) {
+                  <div class="flex flex-wrap gap-1.5 pt-2">
+                    @for (tag of projeto.tags; track tag) {
+                      <span class="text-[11px] font-mono px-2 py-0.5 bg-brand-dark text-brand-sky border border-brand-blue">
+                        {{ tag }}
+                      </span>
+                    }
+                  </div>
+                }
+              </div>
+            </div>
+
+            <!-- Botão de Ação Minimalista com Alto Contraste -->
+            <div class="p-6 pt-0">
+              <a
+                [href]="projeto.link"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 text-xs font-mono font-bold uppercase tracking-widest text-brand-dark bg-brand-cyan border border-brand-cyan hover:bg-white hover:text-brand-dark hover:border-white transition-colors"
+              >
+                <span>Acessar Repositório</span>
+                <span class="font-bold">-></span>
+              </a>
+            </div>
+
+          </article>
+        }
+      </div>
+    } @else {
+      <!-- Tratamento Minimalista Tech para Lista Vazia -->
+      <div class="bg-brand-navy border-2 border-brand-blue p-10 sm:p-14 text-center max-w-2xl mx-auto space-y-4">
+        <div class="w-12 h-12 bg-brand-dark border border-brand-cyan flex items-center justify-center mx-auto text-brand-cyan font-mono font-bold text-sm">
+          [//]
+        </div>
+        <h3 class="text-xl sm:text-2xl font-bold uppercase text-white tracking-tight">
+          Projetos em desenvolvimento...
+        </h3>
+        <p class="text-slate-300 text-sm sm:text-base leading-relaxed max-w-md mx-auto">
+          Novas soluções e estudos de caso estão sendo organizados e em breve estarão disponíveis aqui.
+        </p>
+        <div class="pt-2">
+          <span class="inline-block text-xs font-mono uppercase tracking-widest text-brand-sky bg-brand-dark border border-brand-blue px-3 py-1">
+            Status: Em Atualização
+          </span>
+        </div>
+      </div>
+    }
+
+  </div>
+</section>

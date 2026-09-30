@@ -1,0 +1,146 @@
+<section id="about" class="py-20 lg:py-28 border-b border-brand-navy bg-brand-dark">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+    
+    <!-- Cabeçalho da Seção Minimalista -->
+    <div class="space-y-3">
+      <div class="inline-block text-xs font-mono uppercase tracking-widest text-brand-cyan bg-brand-navy border border-brand-blue px-3 py-1">
+        // 01. Trajetória
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-black uppercase text-white tracking-tight">
+        {{ aboutData().titulo }}
+      </h2>
+      <div class="w-12 h-1 bg-brand-cyan"></div>
+    </div>
+
+    <!-- Card de Biografia com Fundo Sólido e Borda Bem Definida -->
+    <div class="bg-brand-navy border-2 border-brand-blue p-6 sm:p-8 space-y-4">
+      <div class="flex items-center gap-2 border-b border-brand-blue/50 pb-3">
+        <span class="w-2 h-2 bg-brand-cyan"></span>
+        <h3 class="text-xs font-mono uppercase tracking-widest text-brand-sky font-bold">
+          Visão Geral & Atuação Profissional
+        </h3>
+      </div>
+      <p class="text-slate-200 leading-relaxed text-base sm:text-lg">
+        {{ aboutData().resumo }}
+      </p>
+    </div>
+
+    <!-- Grade de Habilidades Técnicas Minimalista Tech -->
+    <div class="space-y-6">
+      <div class="flex items-center gap-2">
+        <span class="text-xs font-mono uppercase tracking-widest text-brand-cyan">// Habilidades Técnicas</span>
+        <div class="flex-1 h-px bg-brand-navy"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        @for (hab of aboutData().habilidades; track hab.categoria) {
+          <div class="bg-brand-navy border border-brand-blue p-5 flex flex-col justify-between hover:border-brand-cyan transition-colors">
+            <div>
+              <div class="flex items-center justify-between border-b border-brand-blue pb-2 mb-4">
+                <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-brand-cyan">
+                  {{ hab.categoria }}
+                </h4>
+                <span class="text-[10px] font-mono text-brand-sky">[{{ hab.items.length }}]</span>
+              </div>
+              
+              <div class="flex flex-wrap gap-2">
+                @for (item of hab.items; track item) {
+                  <span class="text-xs font-mono px-2.5 py-1 bg-brand-dark border border-brand-navy text-slate-300 hover:border-brand-cyan hover:text-white transition-colors">
+                    {{ item }}
+                  </span>
+                }
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Linha de Separação / Whitespace -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 pt-4">
+      
+      <!-- Coluna: Experiências (7 colunas) -->
+      <div class="lg:col-span-7 space-y-6">
+        <div class="flex items-center gap-2 mb-6">
+          <span class="text-xs font-mono uppercase tracking-widest text-brand-cyan">// Experiência Profissional</span>
+          <div class="flex-1 h-px bg-brand-navy"></div>
+        </div>
+
+        <div class="space-y-6 border-l border-brand-blue pl-6 ml-1">
+          @for (exp of aboutData().experiencias; track exp.empresa) {
+            <div class="relative group">
+              <!-- Marcador Quadrado Tech -->
+              <div class="absolute -left-[31px] top-1.5 w-2.5 h-2.5 bg-brand-cyan border border-brand-dark"></div>
+
+              <div class="bg-brand-navy border border-brand-blue p-6 hover:border-brand-cyan transition-colors space-y-3">
+                <div class="flex flex-wrap items-center justify-between gap-2 border-b border-brand-blue/60 pb-2">
+                  <h4 class="text-base sm:text-lg font-bold text-white uppercase tracking-tight">
+                    {{ exp.cargo }}
+                  </h4>
+                  <span class="text-xs font-mono text-brand-cyan bg-brand-dark border border-brand-navy px-2.5 py-1">
+                    {{ exp.periodo }}
+                  </span>
+                </div>
+                
+                <div class="text-xs font-mono text-brand-sky uppercase tracking-wider">
+                  {{ exp.empresa }} | {{ exp.local }}
+                </div>
+
+                <ul class="space-y-2 pt-2 text-sm text-slate-300">
+                  @for (atv of exp.atividades; track atv) {
+                    <li class="flex items-start gap-2.5">
+                      <span class="text-brand-cyan font-mono text-xs select-none">></span>
+                      <span class="leading-relaxed">{{ atv }}</span>
+                    </li>
+                  }
+                </ul>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+
+      <!-- Coluna: Educação & Cursos (5 colunas) -->
+      <div class="lg:col-span-5 space-y-6">
+        <div class="flex items-center gap-2 mb-6">
+          <span class="text-xs font-mono uppercase tracking-widest text-brand-cyan">// Formação Acadêmica</span>
+          <div class="flex-1 h-px bg-brand-navy"></div>
+        </div>
+
+        <div class="space-y-4">
+          @for (form of aboutData().formacao; track form.curso) {
+            <div class="bg-brand-navy border border-brand-blue p-5 hover:border-brand-sky transition-colors space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono text-brand-cyan bg-brand-dark border border-brand-navy px-2 py-0.5">
+                  {{ form.periodo }}
+                </span>
+              </div>
+              <h4 class="text-base font-bold text-white">
+                {{ form.curso }}
+              </h4>
+              <p class="text-xs font-mono text-slate-400">
+                {{ form.instituicao }}
+              </p>
+            </div>
+          }
+
+          <div class="bg-brand-navy border border-brand-blue p-5 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono text-brand-sky bg-brand-dark border border-brand-navy px-2 py-0.5">
+                2023
+              </span>
+            </div>
+            <h4 class="text-base font-bold text-white">
+              C# Completo - Programação Orientada a Objetos
+            </h4>
+            <p class="text-xs font-mono text-slate-400">
+              Certificação em POO e Estruturas Avançadas C#
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>

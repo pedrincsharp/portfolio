@@ -1,0 +1,118 @@
+<section id="hero" class="py-20 lg:py-28 border-b border-brand-navy bg-brand-dark">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+      
+      <!-- Conteúdo Textual (7 colunas) -->
+      <div class="lg:col-span-7 space-y-6">
+        
+        <!-- Tag de Status Tech Minimalista -->
+        <div class="inline-flex items-center gap-2.5 px-3 py-1 bg-brand-navy border border-brand-blue text-brand-sky text-xs font-mono uppercase tracking-widest">
+          <span class="w-2 h-2 bg-brand-cyan"></span>
+          <span>Mais de 5 anos de experiência</span>
+        </div>
+
+        <!-- Títulos -->
+        <div class="space-y-3">
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-none uppercase">
+            {{ heroData().nome }}
+          </h1>
+          <h2 class="text-lg sm:text-xl font-mono text-brand-cyan tracking-wide">
+            > {{ heroData().cargo }}
+          </h2>
+        </div>
+
+        <!-- Card de Descrição com Fundo Sólido e Borda Marcada -->
+        <div class="p-6 bg-brand-navy border border-brand-blue">
+          <p class="text-slate-200 text-base sm:text-lg leading-relaxed font-normal">
+            {{ heroData().subtitulo }}
+          </p>
+        </div>
+
+        <!-- Botões de Ação com Cantos Vivos e Alto Contraste -->
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <a
+            href="#projects"
+            class="px-6 py-3 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest text-brand-dark bg-brand-cyan border border-brand-cyan hover:bg-white hover:text-brand-dark hover:border-white transition-colors"
+          >
+            [ {{ heroData().ctaProjetos }} ]
+          </a>
+          <a
+            href="#footer"
+            class="px-6 py-3 text-xs sm:text-sm font-mono font-semibold uppercase tracking-widest text-white bg-brand-navy border border-brand-blue hover:bg-brand-blue hover:border-brand-sky transition-colors"
+          >
+            {{ heroData().ctaContato }}
+          </a>
+        </div>
+
+        <!-- Links Sociais / Conexão -->
+        <div class="pt-4 flex flex-wrap items-center gap-3">
+          <span class="text-xs font-mono uppercase tracking-wider text-slate-400">Links:</span>
+          
+          <!-- GitHub -->
+          <a
+            [href]="heroData().github"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-3 py-1.5 text-xs font-mono uppercase text-slate-300 bg-brand-navy border border-brand-blue hover:border-brand-cyan hover:text-brand-cyan transition-colors"
+            title="GitHub"
+            aria-label="Abrir GitHub de João Pedro"
+          >
+            GitHub
+          </a>
+
+          <!-- LinkedIn -->
+          <a
+            [href]="heroData().linkedin"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-3 py-1.5 text-xs font-mono uppercase text-slate-300 bg-brand-navy border border-brand-blue hover:border-brand-cyan hover:text-brand-cyan transition-colors"
+            title="LinkedIn"
+            aria-label="Abrir LinkedIn de João Pedro"
+          >
+            LinkedIn
+          </a>
+
+          <!-- Email -->
+          <a
+            [href]="'mailto:' + heroData().email"
+            class="px-3 py-1.5 text-xs font-mono uppercase text-slate-300 bg-brand-navy border border-brand-blue hover:border-brand-cyan hover:text-brand-cyan transition-colors"
+            title="Enviar e-mail"
+            aria-label="Enviar e-mail para João Pedro"
+          >
+            E-mail
+          </a>
+
+        </div>
+
+      </div>
+
+      <!-- Foto de Perfil com Moldura Reta e Fundo Sólido (5 colunas) -->
+      <div class="lg:col-span-5 flex justify-center">
+        <div class="relative">
+          
+          <!-- Borda de fundo sólido deslocada para efeito tech minimalista -->
+          <div class="absolute -bottom-3 -right-3 w-full h-full border-2 border-brand-blue bg-brand-navy -z-0"></div>
+          
+          <!-- Container da Foto -->
+          <div class="relative z-10 w-64 h-64 sm:w-80 sm:h-80 bg-brand-dark border-2 border-brand-cyan overflow-hidden">
+            <img
+              [src]="heroData().foto"
+              [alt]="heroData().nome"
+              class="w-full h-full object-cover object-center grayscale contrast-125 hover:grayscale-0 transition-all duration-300"
+              loading="eager"
+            />
+          </div>
+
+          <!-- Tag Técnica Flutuante -->
+          <div class="absolute -bottom-3 -left-3 z-20 bg-brand-dark border border-brand-cyan px-3 py-1">
+            <span class="text-[11px] font-mono uppercase font-bold text-brand-cyan tracking-wider">
+              Backend // .NET
+            </span>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

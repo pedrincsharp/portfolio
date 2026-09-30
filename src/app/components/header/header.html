@@ -1,0 +1,60 @@
+<header class="sticky top-0 z-50 bg-brand-dark border-b border-brand-navy">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      
+      <!-- Logo Minimalista Tech com cantos vivos -->
+      <a href="#hero" class="flex items-center group" (click)="fecharMenu()" aria-label="Ir para o início">
+        <span class="w-9 h-9 bg-brand-blue border border-brand-cyan flex items-center justify-center font-mono font-bold text-white text-sm group-hover:bg-brand-cyan group-hover:text-brand-dark transition-colors">
+          {{ headerData().logo }}
+        </span>
+      </a>
+
+      <!-- Menu Desktop Minimalista -->
+      <nav class="hidden md:flex items-center space-x-2" aria-label="Navegação desktop">
+        @for (item of headerData().menu; track item.link) {
+          <a
+            [href]="item.link"
+            class="text-xs font-mono uppercase tracking-wider text-slate-300 hover:text-brand-cyan hover:bg-brand-navy px-3 py-2 border border-transparent hover:border-brand-blue transition-colors"
+          >
+            {{ item.nome }}
+          </a>
+        }
+      </nav>
+
+      <!-- Botão Hambúrguer Mobile -->
+      <button
+        type="button"
+        (click)="toggleMenu()"
+        class="md:hidden p-2 text-slate-200 bg-brand-navy border border-brand-blue hover:border-brand-cyan hover:text-brand-cyan focus:outline-none"
+        [attr.aria-expanded]="isMenuOpen()"
+        aria-label="Abrir menu de navegação"
+      >
+        @if (!isMenuOpen()) {
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        } @else {
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        }
+      </button>
+
+    </div>
+  </div>
+
+  <!-- Menu Mobile Dropdown -->
+  @if (isMenuOpen()) {
+    <div class="md:hidden bg-brand-dark border-b border-brand-navy px-4 py-4 space-y-2">
+      @for (item of headerData().menu; track item.link) {
+        <a
+          [href]="item.link"
+          (click)="fecharMenu()"
+          class="block px-3 py-2.5 text-xs font-mono uppercase tracking-wider text-slate-200 bg-brand-navy/60 border border-brand-navy hover:border-brand-cyan hover:text-brand-cyan transition-colors"
+        >
+          {{ item.nome }}
+        </a>
+      }
+    </div>
+  }
+</header>
